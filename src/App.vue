@@ -1,6 +1,7 @@
 <template lang="pug">
-	#app.container.d-flex.flex-column 
+	#app.container.d-flex.flex-column.justify-content-between 
 		nav-bar
+		router-view.wrapper
 		footer-bar
 </template>
 
@@ -18,10 +19,9 @@ export default {
 </script>
 
 <style lang="scss">
-	$lightColor: #f0f1f4;
-	html,body,div,p,ul,li,h1,h2,h3,h4,h5 {
-		margin: 0; padding: 0; list-style: none;
-	}
+	@import "./assets/css/normalize";
+	@import "./assets/css/variables";
+	
 	#app {height: 100vh; border-left: 2px solid	$lightColor; border-right: 2px solid $lightColor; padding: 0 !important;}
-
+	.wrapper { flex-grow: 1;}
 </style>
