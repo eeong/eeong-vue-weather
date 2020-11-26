@@ -1,4 +1,4 @@
-import { axCity, axDaily, getLocation } from '../api';
+import { axCity, axDaily, axWeekly, getLocation } from '../api';
 
 export default {
 	async ACT_CITY({commit}) {
@@ -11,10 +11,10 @@ export default {
 		if(typeof val === 'object')
 			commit('MUT_DAILY', await axDaily({lat: val.lat ,lon: val.lon}));
 		else if(typeof val === 'string')
-			commit('MUT_DAILY', await axDaily({id: val}));
+			commit('MUT_DAILY', await axDaily( val));
 		
 	},
-	ACT_WEEKLY({commit}, selectCity) {
-	//	commit('MUT_WEEKLY', []);
+	async	ACT_WEEKLY({commit}, val) {
+		commit('MUT_WEEKLY', await axWeekly( val));
 	},
 }

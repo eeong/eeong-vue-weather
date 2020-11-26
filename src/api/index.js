@@ -23,7 +23,25 @@ const axDaily = async (val) => {
 		const r = await axios.get(DAILY_URL, {params: SEND_DATA})
 		r.data.icon = iconGen(r.data.weather[0].icon)
 		r.data.time = moment(r.data.dt*1000).format('YYYY-MM-DD HH:mm')
-		console.log(r.data)
+		return r.data
+	}
+	catch(err){
+		console.log(err)
+		return {code:500, error: err}
+	}
+}
+
+const axWeekly = async (val) => {
+	try {
+		SEND_DATA.id = val
+		const r = await axios.get(WEEKLY_URL, {params: SEND_DATA})
+		r.data.title = r.data.city.name + ', ' + r.data.city.country
+		for(let v of r.data.list) {
+			v.icon = iconGen(v.weather[0].icon)
+			v.time = moment(v.dt*1000).format('YYYY-MM-DD HH 기준')
+		}
+		//r.data.icon = iconGen(r.data.weather[0].icon)
+		//r.data.time = moment(r.data.dt*1000).format('YYYY-MM-DD HH:mm')
 		return r.data
 	}
 	catch(err){
@@ -53,4 +71,4 @@ const getLocation = () => {
 	})
 }
 
-export { axCity, axDaily, getLocation }
+export { axCity, axWeekly, axDaily, getLocation }

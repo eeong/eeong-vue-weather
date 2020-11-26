@@ -9,7 +9,7 @@
 
 <script>
 export default {
-	name: 'weather-temp',
+	name: 'weather-wind',
 	props: ['deg','speed']
 }
 </script>
