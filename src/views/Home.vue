@@ -7,20 +7,31 @@
 					small vue.js를 활용한 날씨 정보 웹앱
 						span.text-secondary.ml-3
 		city-list
-		weather-daily
+		weather-daily(:result='GET_DAILY')
 </template>
 
 <script>
 import CityList from '../components/CityList.vue'
 import WeatherDaily from '../components/weather/WeatherDaily.vue'
+import { mapGetters } from 'vuex'
 
 export default {
 	name:'home',
+	created() {
+		this.$store.dispatch('ACT_POSITION')
+	},
+	computed: {
+		...mapGetters([ 'GET_POSITION', 'GET_DAILY'])
+	},
 	components : {
 		'city-list': CityList,
 		'weather-daily' : WeatherDaily,
+	},
+	watch: {
+	GET_POSITION: function(newValue) {
+		this.$store.dispatch('ACT_DAILY', {lat: newValue.lat, lon: newValue.lon});
+		},
 	}
-
 }
 </script>
 

@@ -13,7 +13,7 @@ const routes = [
 		component: Home,
 	},
 	{
-		path: '/daily',
+		path: '/daily/:id',
 		name: 'daily',
 		component: Daily,
 	},
@@ -22,12 +22,7 @@ const routes = [
 		name: 'weekly',
 		component: Weekly,
 	},
-	/* {
-	 path:'/sample/:id',
-	 name:'sample',
-	 this.$router.params.id
-	 this.$router.query.id
-	} */
+
 ]
 
 const router = new VueRouter({
