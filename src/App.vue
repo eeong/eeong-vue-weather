@@ -23,6 +23,17 @@ export default {
 	@import "./assets/css/normalize";
 	@import "./assets/css/variables";
 	
-	#app {height: 100vh; border-left: 2px solid	$lightColor; border-right: 2px solid $lightColor; padding: 0 !important; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
-	.wrapper { flex-grow: 1;}
+	#app {
+		height: 100vh;
+		border-left: 2px solid $lightColor;
+		overflow: hidden; 
+		border-right: 2px solid $lightColor; 
+		padding: 0 !important; 
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 	Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		.wrapper { 
+			flex-grow: 1;
+		}
+	}
+
+	
 </style>

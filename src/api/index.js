@@ -1,17 +1,14 @@
 import axios from 'axios'
-import moment from 'moment'
+import { iconGen , dateGen } from '../modules/util'
 
 const APP_ID = 'd905c12b72e24ba0ea5f7746a96c3d73'
 const KAKAO_KEY = "81847498407d020eeeecb5cf3ec823a8";
 const DAILY_URL = 'http://api.openweathermap.org/data/2.5/weather';
 const WEEKLY_URL = 'http://api.openweathermap.org/data/2.5/forecast';
 const SEND_DATA = {units:'metric', lang: 'kr', appid:APP_ID}
-const ICON_URL = 'https://openweathermap.org/img/wn/';
+
 const CITY_PATH = '/json/city.json'
 
-const iconGen = (icon) => {
-	return ICON_URL + icon + '@2x.png'
-}
 
 const axDaily = async (val) => {
 	try {
@@ -28,7 +25,7 @@ const axDaily = async (val) => {
 		}
 		const r = await axios.get(DAILY_URL, {params: SEND_DATA})
 		r.data.icon = iconGen(r.data.weather[0].icon)
-		r.data.time = moment(r.data.dt*1000).format('YYYY-MM-DD HH:mm')
+		r.data.time = dateGen(r.data.dt*1000 ,1)
 		return r.data
 	}
 	catch(err){
@@ -44,7 +41,7 @@ const axWeekly = async (val) => {
 		r.data.title = r.data.city.name + ', ' + r.data.city.country
 		for(let v of r.data.list) {
 			v.icon = iconGen(v.weather[0].icon)
-			v.time = moment(v.dt*1000).format('YYYY-MM-DD HH 기준')
+			v.time = dateGen(v.dt*1000,1)
 		}
 		//r.data.icon = iconGen(r.data.weather[0].icon)
 		//r.data.time = moment(r.data.dt*1000).format('YYYY-MM-DD HH:mm')

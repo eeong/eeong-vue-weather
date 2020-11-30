@@ -8,11 +8,12 @@
 <script>
 	export default {
 		name: 'weather-title',
-		props: ['city','country','time',]
+		props: ['city','country','time']
 	}
 </script>
 
 <style lang='scss' scoped>
 	@import "@/assets/css/variables.scss";
+
 	.time {color: $midColor; font-size: 0.875em;}
 </style>
