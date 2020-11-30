@@ -2,6 +2,9 @@ export default {
 	MUT_CITY(state, r) {
 		state.cityLists = r;
 	},
+	MUT_SEL_CITY(state, r) {
+		state.selectCity = r;
+	},
 	MUT_POSITION(state, r) {
 		state.position = r;
 	},

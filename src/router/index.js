@@ -13,12 +13,12 @@ const routes = [
 		component: Home,
 	},
 	{
-		path: '/daily/:id',
+		path: '/daily/',
 		name: 'daily',
 		component: Daily,
 	},
 	{
-		path: '/weekly',
+		path: '/weekly/',
 		name: 'weekly',
 		component: Weekly,
 	},

@@ -4,6 +4,9 @@ export default {
 	async ACT_CITY({commit}) {
 		commit('MUT_CITY', await axCity());
 	},
+	async ACT_SEL_CITY({commit},val) {
+		commit('MUT_SEL_CITY', val);
+	},
 	async ACT_POSITION({commit}) {
 		commit('MUT_POSITION', await getLocation());
 	},

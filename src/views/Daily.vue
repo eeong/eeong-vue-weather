@@ -1,7 +1,7 @@
 <template lang='pug'>
 	.home-wrapper
 		.jumbotron
-			h2.text-info Daily/Weekly Weather Infomation
+			h2.text-info Daily Weather 
 				hr
 				p.text-primary.float-right
 					small vue.js를 활용한 날씨 정보 웹앱
@@ -19,29 +19,33 @@ import { mapGetters } from 'vuex'
 
 export default {
 	name: 'daily',
+	
 	data(){
 		return {
 			info: null,
-			selectCity: '',
 		}
 	},
-	beforeMount(){
-		this.selectCity = this.$route.params.id
-
-	},
 	created() {
-		this.selectCity = this.$route.params.id
-		this.$store.dispatch('ACT_DAILY', this.selectCity)
+		this.$store.dispatch('ACT_DAILY', this.$store.state.selectCity)
 	},
 	components: {
 		'weather-daily' : WeatherDaily,
 		'city-list' : CityList
 	},
 	computed: {
-		...mapGetters(['GET_DAILY']),
-
+		...mapGetters(['GET_DAILY', 'GET_SEL_CITY']),
+		
 	},
+	watch: {
+		GET_SEL_CITY: function(v) { 
+			
+			this.$store.dispatch('ACT_DAILY', v)
+		}
+	}
+	
 }
+
+
 </script>
 
 <style lang='scss' scoped>

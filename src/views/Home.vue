@@ -20,12 +20,12 @@ export default {
 	created() {
 		this.$store.dispatch('ACT_POSITION')
 	},
+	components : {
+	'city-list': CityList,
+	'weather-daily' : WeatherDaily,
+	},
 	computed: {
 		...mapGetters([ 'GET_POSITION', 'GET_DAILY'])
-	},
-	components : {
-		'city-list': CityList,
-		'weather-daily' : WeatherDaily,
 	},
 	watch: {
 	GET_POSITION: function(newValue) {

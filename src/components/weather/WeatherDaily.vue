@@ -1,8 +1,6 @@
 <template lang='pug'>
 	div.weather-daily.text-center.d-flex.flex-column.justify-content-center
-		div.city-wrap
-			h3.city {{city}} , {{country}}
-			h5.time {{time}} 기준
+		weather-title(:city='city' :country='country' :time='time')
 		weather-icon.weather-icon(:icon='icon')
 		weather-temp(:temp='temp' :tempMin='tempMin' :tempMax='tempMax' :feel='tempFeel')
 		weather-desc(:main='main' :description='description')
@@ -16,6 +14,7 @@ import WeatherIcon from './WeatherIcon.vue'
 import WeatherTemp from './WeatherTemp.vue'
 import WeatherDesc from './WeatherDesc.vue'
 import WeatherWind from './WeatherWind.vue'
+import WeatherTitle from './WeatherTitle.vue'
 
 export default {
 	name: 'weather-daily',
@@ -53,10 +52,11 @@ export default {
 		},
 	},
 	components: {
+		'weather-title' : WeatherTitle,
 		'weather-icon': WeatherIcon,
 		'weather-temp': WeatherTemp,
 		'weather-desc' : WeatherDesc,
-		'weather-wind' : WeatherWind
+		'weather-wind' : WeatherWind,
 	},
 	
 }

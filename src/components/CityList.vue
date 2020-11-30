@@ -1,16 +1,16 @@
 <template lang='pug'>
 	.city-wrapper.text-right
 		b-dropdown#dropdown-offset.m-md-2(text='날씨를 확인할 도시를 선택하세요' variant='primary' @:change='onCityChange'  right)
-			b-dropdown-item.w-100(v-for='v in GET_CITY' :key='v.id' :value='v.id' @click='onCityChange(v.id)') {{v.name}}
-		
+			b-dropdown-item.w-100(v-for='v in GET_CITY' :key='v.id' :value='v.id' @click='onCityChange(v.id || null)') {{v.name}}
+		//-div.form-inline.text-center
+			select.form-control.mx-auto(v-model='selectCity' @change='onCityChange')
+				option(value='' selected) 날씨를 확인할 도시를 선택하세요
+				option(v-for='v in GET_CITY' :key='v.id' :value='v.id') {{v.name}}
 </template>
 
 <script>
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
-/* div.form-inline.text-center
-			select.form-control(v-model='selectCity' @change='onCityChange')
-				option(value='' selected) 날씨를 확인할 도시를 선택하세요
-				option(v-for='v in GET_CITY' :key='v.id' :value='v.id') {{v.name}} */
+
 export default {
 	name: 'cityLists',
 	data() {
@@ -18,22 +18,21 @@ export default {
 			selectCity:'',
 		}
 	},
+	
 	created() {
 		this.$store.dispatch('ACT_CITY');
 		this.$store.dispatch('ACT_POSITION');
 	},
 	methods: {
 		onCityChange(a){
-			
-			this.$router.push('/daily/'+a)
-			//this.$store.dispatch('ACT_DAILY', this.selectCity);
-			//this.$store.dispatch('ACT_WEEKLY', this.selectCity);
+			this.$store.dispatch('ACT_SEL_CITY', a)
+			if(a) this.$router.push('/daily').catch(()=>{});
+			else this.$router.push('/')
 		}
 	},
 	computed: {
-		...mapGetters(['GET_CITY'])
+		...mapGetters(['GET_CITY', 'GET_SEL_CITY'])
 	},
-
 }
 </script>
 

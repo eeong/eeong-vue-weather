@@ -3,5 +3,5 @@ export default {
 	position:'',
 	daily:'',
 	weekly:'',
-
+	selectCity:''
 }
