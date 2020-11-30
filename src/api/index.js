@@ -3,8 +3,8 @@ import { iconGen , dateGen } from '../modules/util'
 
 const APP_ID = 'd905c12b72e24ba0ea5f7746a96c3d73'
 const KAKAO_KEY = "81847498407d020eeeecb5cf3ec823a8";
-const DAILY_URL = 'http://api.openweathermap.org/data/2.5/weather';
-const WEEKLY_URL = 'http://api.openweathermap.org/data/2.5/forecast';
+const DAILY_URL = 'https://api.openweathermap.org/data/2.5/weather';
+const WEEKLY_URL = 'https://api.openweathermap.org/data/2.5/forecast';
 const SEND_DATA = {units:'metric', lang: 'kr', appid:APP_ID}
 
 const CITY_PATH = '/json/city.json'
