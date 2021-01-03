@@ -67,5 +67,5 @@ export default {
 
 	.weather-daily { max-width: 500px; width: 96%; margin: 3em auto 0 auto;	}
 	.weather-icon {max-width: 300px; margin:auto;}
-	.time {color: $midColor; font-size: 0.875em;}
+	.time {color: $midColor; font-size: 1em;}
 </style>

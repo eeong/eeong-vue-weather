@@ -5,6 +5,7 @@
 			strong {{temp}}
 			| ℃ / 체감온도: 
 			strong {{feel}}
+			| ℃
 		div.ml-3.temp-detail 
 			| 최저기온: 
 			strong {{tempMin}}
@@ -21,6 +22,6 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-	.temp {font-size: 1.75em;}
+	.temp {font-size: 1.625em;}
 	.temp-detail { font-size: 1.25em;}
 </style>

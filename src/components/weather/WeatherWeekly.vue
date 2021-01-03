@@ -1,5 +1,6 @@
 <template lang="pug">
 	div.weather-weekly.text-center.d-flex.flex-column.justify-content-center
+		city-list
 		weather-title.py-3(:city='city' :country='country' :time='time')
 		div.list-wrap.d-flex.flex-column.align-items-center.justify-content-start
 			weather-weekly-list.list(v-for='v in list' :val='v')
@@ -8,6 +9,7 @@
 <script>
 import { mapGetters } from "vuex"
 
+import CityList from '../CityList.vue'
 import WeatherTitle from './WeatherTitle.vue'
 import WeatherWeeklyList from './WeatherWeeklyList.vue'
 
@@ -22,6 +24,7 @@ export default {
 		}
 	},
 	components: {
+		'city-list' : CityList,
 		'weather-title' : WeatherTitle,
 		'weather-weekly-list' : WeatherWeeklyList
 	},
@@ -37,11 +40,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	
+	.city-wrapper {
+		padding-top: 1em;
+		width: 90%;
+	}
 	.list-wrap {
 		width: 100%;
 		height: calc( 100vh - 186px );
 		overflow-y: auto;
-		.list {border-bottom: 1px solid #ddd; padding: 0.5em;}
+		
+		.list {
+			width: 70%;
+			margin: 0.5em 0;
+			border-bottom: 1px solid #ddd; padding: 0.5em;
+			border-radius: 0.5em;
+			background:rgba(255,255,255,0.2) ;
+			
+		}
+	}
+	#dropdown-offset.btn-group {
+		margin: 0;
 	}
 </style>

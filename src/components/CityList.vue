@@ -26,8 +26,9 @@ export default {
 	methods: {
 		onCityChange(a){
 			this.$store.dispatch('ACT_SEL_CITY', a)
-			if(a) this.$router.push('/daily').catch(()=>{});
-			else this.$router.push('/')
+			if(a && (this.$route.path=='/daily' || this.$route.path=='/')) this.$router.push('/daily').catch(()=>{});
+			else if (a && this.$route.path=='/weekly') this.$router.push('/weekly').catch(()=>{});
+			else this.$router.push('/');
 		}
 	},
 	computed: {
