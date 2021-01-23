@@ -2,14 +2,10 @@
 	.city-wrapper.text-right
 		b-dropdown#dropdown-offset.m-md-2(text='날씨를 확인할 도시를 선택하세요' variant='primary' @:change='onCityChange' right)
 			b-dropdown-item.w-100(v-for='v in GET_CITY' :key='v.id' :value='v.id' @click='onCityChange(v.id || null)') {{v.name}}
-		//-div.form-inline.text-center
-			select.form-control.mx-auto(v-model='selectCity' @change='onCityChange')
-				option(value='' selected) 날씨를 확인할 도시를 선택하세요
-				option(v-for='v in GET_CITY' :key='v.id' :value='v.id') {{v.name}}
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
 	name: 'cityLists',
