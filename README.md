@@ -1,6 +1,6 @@
 # Vue.js를 이용한 날씨 정보 어플리케이션
 
-### [링크]("https://eeong-weather-project.web.app")
+### [링크](https://eeong-weather-project.web.app)
 
 ## 스택
 
